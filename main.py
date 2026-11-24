@@ -50,7 +50,11 @@ def _mentions_report(value):
     return "week" in words and "printer" in words, "reads like a status report"
 
 
-CHECKS = [_is_text, _fits_gate, _not_blank, _single_line, _mentions_report]
+def _ends_with_period(value):
+    return value.rstrip().endswith("."), "line ends with terminal punctuation"
+
+
+CHECKS = [_is_text, _fits_gate, _not_blank, _single_line, _mentions_report, _ends_with_period]
 
 
 def run_checks(value):
